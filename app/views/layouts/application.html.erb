@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/e88726f84d.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <% if user_signed_in? %>
+        <li><%= link_to "Home", "/homes/top" %></li>
+        <li><%= link_to "Users", "/users/user" %></li>
+        <li><%= link_to "Books", "/books/book" %></li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Home", "/homes/top" %></li>
+        <li><%= link_to "About", "/homes/about" %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+      <% end %>
+    </header>
+
+    <%= yield %>
+  </body>
+  <main>
+
+  </main>
+  <footer>
+    <p>CopyRight Infratop.inc</p>
+  </footer>
+</html>
